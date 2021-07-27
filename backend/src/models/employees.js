@@ -1,11 +1,21 @@
 const connection = require('../config/connection');
 
-const createEmployee = async ({ DataCad, Cargo, CPF, Nome, UfNasc, Salario, Status }) => {
+const createEmployee = async ({ DataCad, Cargo, Cpf, Nome, UfNasc, Salario, Status }) => {
   const employee = await connection()
     .then((db) => db.collection('employees')
-    .insertOne({ DataCad: DataCad, Cargo, CPF, Nome, UfNasc, Salario, Status }))
-    .then(result => result.ops[0]);
-  return employee;
+    .insertOne({ DataCad, Cargo, Cpf, Nome, UfNasc, Salario, Status }))
+    .then(result => result.insertedId);
+    
+  return {
+    id: employee,
+    DataCad,
+    Cargo,
+    Cpf,
+    Nome,
+    UfNasc,
+    Salario,
+    Status,
+  };
 };
 
 const getAllEmployees = async () => {
@@ -20,9 +30,9 @@ const  getEmployeeByName = async (Nome) => {
   return employee;
 };
 
-const  getEmployeeByCpf = async (CPF) => {
+const  getEmployeeByCpf = async (Cpf) => {
   const employee = await connection()
-    .then((db) =>  db.collection('employees').findOne({ CPF: CPF }));
+    .then((db) =>  db.collection('employees').findOne({ Cpf: Cpf }));
   return employee;
 };
 
@@ -42,7 +52,6 @@ const  getAllEmployeesByUF = async () => {
   const employee = await connection()
     .then((db) =>  db.collection('employees')
     .find().sort({UfNasc: -1}).toArray());
-    //.aggregate([{$group: {_id: '$UfNasc', count: {$sum: 1}}}, {$sort:{ count: -1}}]).toArray());
   return employee;
 };
 
@@ -66,20 +75,20 @@ const  getEmployeesByStatus = async (Status) => {
   return employee;
 };
 
-const updateEmployee =async ({ DataCad, Cargo, CPF, Nome, UfNasc, Salario, Status }) => {
+const updateEmployee =async ({ DataCad, Cargo, Cpf, Nome, UfNasc, Salario, Status }) => {
   const employee = await connection()
     .then((db) => db.collection('employees')
       .updateOne(
-        { CPF: CPF },
-        {$set: {  DataCad, Cargo, CPF: CPF, Nome, UfNasc, Salario, Status }}))
-    .then(() => ({  DataCad, Cargo, CPF: CPF, Nome, UfNasc, Salario, Status }));
+        { Cpf: Cpf },
+        {$set: {  DataCad, Cargo, Cpf: Cpf, Nome, UfNasc, Salario, Status }}))
+    .then(() => ({  DataCad, Cargo, Cpf: Cpf, Nome, UfNasc, Salario, Status }));
 
   return employee;
 };
 
-const deleteEmployee = async (CPF) => {
+const deleteEmployee = async (Cpf) => {
   const employee = await connection().then((db) =>
-    db.collection('employees').deleteOne({ CPF: CPF })
+    db.collection('employees').deleteOne({ Cpf: Cpf })
   );
   return employee;
 };

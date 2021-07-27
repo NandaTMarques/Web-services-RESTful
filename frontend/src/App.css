@@ -1,0 +1,274 @@
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  height: 100%;
+}
+
+body {
+  align-items: center;
+  background-color: rgb(104, 101, 101);
+  color: white;
+  font-family: Open Sans, sans-serif;
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+.home-card {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  font-weight: 500;
+  height: 100vh;
+  justify-content: center;
+  text-shadow: black 4px 8px 4px;
+  width: 100%;
+}
+
+.card {
+  align-items: center;
+  background-color: rgb(240, 237, 237);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.63) 2px 2px 6px;
+  color: rgb(104, 101, 101);
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: center;
+  margin: 0;
+  width: 250px;
+}
+
+.logo-home {
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+  padding-bottom: 20px;
+}
+
+.cardButtons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.initial-button {
+  background-color: rgb(241, 138, 53);
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color: rgb(56, 55, 55);
+  font-weight: 800;
+  height: 35px;
+  margin: 5px;
+  text-decoration: none;
+  width: 200px;
+}
+
+.initial-button:hover {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.initial-button a {
+  color:rgb(56, 55, 55);
+  text-decoration: none;
+}
+
+.logout-button {
+  background-color: rgb(247, 171, 58);
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color: white;
+  font-weight: 800;
+  height: 32px;
+  margin: 8px;
+  text-decoration: none;
+  width: 120px;
+}
+
+.add-service {
+  background-color: rgb(91, 214, 128);
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color: white;
+  font-weight: 800;
+  height: 32px;
+  margin: 8px;
+  text-decoration: none;
+  width: 120px;
+}
+
+.all-services-button {
+  background-color: rgb(241, 138, 53);
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color: white;
+  font-weight: 800;
+  height: 32px;
+  margin: 8px;
+  text-decoration: none;
+  width: 120px;
+}
+
+.add-service-form {
+  background-color: rgb(91, 214, 128);
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color: white;
+  font-weight: 800;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 10px;
+  text-decoration: none;
+  width: 130px;
+}
+
+.add-service-order {
+  background-color: rgb(91, 214, 128);
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color: white;
+  font-weight: 800;
+  height: 32px;
+  margin: 8px;
+  text-decoration: none;
+  width: 120px;
+}
+
+.header {
+  align-items: center;
+  background-color: rgb(240, 237, 237);
+  color:rgb(56, 55, 55);
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.edit-button {
+  background-color: rgb(18, 102, 228);
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color: white;
+  font-weight: 800;
+  height: 25px;
+  margin: 5px;
+  text-decoration: none;
+  width: 80px;
+}
+
+.delete-button {
+  background-color: rgb(238, 49, 49);
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color: white;
+  font-weight: 800;
+  height: 32px;
+  margin: 8px;
+  text-decoration: none;
+  width: 120px;
+}
+
+.service-form{
+  display: flex;
+  height: 50px;
+  justify-content: start;
+  width: 60%;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.service-form input {
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color:rgb(56, 55, 55);
+  height: 32px;
+  margin: 8px;
+}
+
+/* table-----------------------------> */
+
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.content{
+  border-collapse: collapse;
+  display:flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.content h2 {
+  display:flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 25px;
+}
+
+.rTable{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.rTable thead{
+  background: rgb(150, 145, 145);
+  border-radius: 5px;
+  color:rgb(71, 70, 70);
+  font-weight: bold;
+}
+
+.rTable th , .rTable td{
+  background: rgb(248, 235, 193);
+  color:rgb(71, 70, 70);
+  padding: 7px 0;
+}
+
+@media screen and (max-width: 480px){
+    .content{width: 94%;}
+    .rTable thead{display:none;}
+    .rTable tbody td{display: flex; flex-direction: column; }
+}
+
+@media only screen and (min-width: 1200px){
+    .content{width:100%;}
+    .rTable tbody tr td:nth-child(1){width:20%;}
+    .rTable tbody tr td:nth-child(2){width:15%;}
+    .rTable tbody tr td:nth-child(3){width:10%;}
+    .rTable tbody tr td:nth-child(4){width:10%;}
+    .rTable tbody tr td:nth-child(5){width:10%;}
+    .rTable tbody tr td:nth-child(5){width:10%;}
+    .rTable tbody tr td:nth-child(5){width:10%;}
+}
+
+.form-select input, select {
+  background-color: rgb(240, 237, 237);
+  border-radius: 5px;
+  border:  rgb(71, 70, 70);
+  box-shadow: rgba(0, 0, 0, 0.452) 2px 2px 6px;
+  color: rgb(71, 70, 70);
+  margin: 10px;
+  width: 140px;
+}
+
+.form-select {
+  display: flex;
+  height: 50px;
+  justify-content: start;
+  width: 100%;
+  flex-direction: row;
+  margin-top: 15px;
+}

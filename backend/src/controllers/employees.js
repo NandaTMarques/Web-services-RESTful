@@ -21,27 +21,20 @@ const getEmployeeByName = async (req, res) => {
 
 const createEmployee = async (req, res) => {
   try {
-    const { DataCad, Cargo, CPF, Nome, UfNasc, Salario, Status } = req.body;
-    /* const employeeByName = await getEmployeeByName(Nome);
-    if(employeeByName) {
-      const employeeUpdate = await employeesServices.updateEmployee({ DataCad, Cargo, CPF, Nome, UfNasc, Salario, Status });
-      return res.status(200).json(employeeUpdate);
-    } */
-    const newEmployee = await employeesServices.createEmployee({ DataCad, Cargo, CPF, Nome, UfNasc, Salario, Status });
-    console.log(newEmployee)
+    const { Cargo, Cpf, Nome, UfNasc, Salario } = req.body;
+    const newEmployee = await employeesServices.createEmployee({ Cargo, Cpf, Nome, UfNasc, Salario });
+    
     res.status(201).json(newEmployee);
   } catch (error) {
-    if (error.message === 'Invalid entries. Try again.') {
-      res.status(400).json(error.message);
-    }
     res.status(500).json(error.message);
   }
 };
 
 const getEmployeeByCpf = async (req, res) => {
+  console.log(req.body);
   try {
-    const { CPF } = req.body;
-    const employee = await employeesServices.getEmployeeByCpf(CPF);
+    const { Cpf } = req.body;
+    const employee = await employeesServices.getEmployeeByCpf(Cpf);
     return res.status(200).json(employee);
   } catch (error) {
     res.status(404).json(error.message);
@@ -108,10 +101,9 @@ const getEmployeesByStatus = async (req, res) => {
 };
 
 const deleteEmployee = async (req, res) => {
-  //console.log('delete', req.params)
   try {
-    const { CPF } = req.body;
-    const employee = await employeesServices.deleteEmployee(CPF);
+    const { Cpf } = req.body;
+    const employee = await employeesServices.deleteEmployee(Cpf);
     res.status(204).json(employee);
   } catch (error) {
     res.status(500).json(error.message);

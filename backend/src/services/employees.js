@@ -1,8 +1,15 @@
 const employeesModel = require('../models/employees');
 
-const createEmployee = async ({ DataCad, Cargo, CPF, Nome, UfNasc, Salario, Status }) => {
-  const employee = await employeesModel.createEmployee({ DataCad, Cargo, CPF, Nome, UfNasc, Salario, Status });
-  return employee;
+const createEmployee = async ({ Cargo, Cpf, Nome, UfNasc, Salario }) => {
+  const DataCad = new Date().toLocaleDateString();
+  const Status = 'ATIVO';
+  const findEmployee = await employeesModel.getEmployeeByCpf(Cpf);
+  if(findEmployee) {
+    const updateEmployee = await employeesModel.updateEmployee({ DataCad, Cargo, Cpf, Nome, UfNasc, Salario, Status });
+    return updateEmployee;
+  }
+  const newEmployee = await employeesModel.createEmployee({ DataCad, Cargo, Cpf, Nome, UfNasc, Salario, Status });
+  return newEmployee;
 };
 
 const getAllEmployees = async () => {
@@ -52,21 +59,21 @@ const getEmployeesByStatus = async (Status) => {
   return employees;
 };
 
-const getEmployeeByCpf = async (CPF) => {
-  if(!CPF || CPF.length !== 11) throw new Error('Invalid entries. Try again.');
-  const Employee = await employeesModel.getEmployeeByCpf(CPF);
+const getEmployeeByCpf = async (Cpf) => {
+  if(!Cpf || Cpf.length !== 11) throw new Error('Invalid entries. Try again.');
+  const Employee = await employeesModel.getEmployeeByCpf(Cpf);
   return Employee;
 };
 
-const updateEmployee = async ({ DataCad, Cargo, CPF, Nome, UfNasc, Salario, Status }) => {
-  const employee = await employeesModel.updateEmployee({ DataCad, Cargo, CPF, Nome, UfNasc, Salario, Status });
+const updateEmployee = async ({ DataCad, Cargo, Cpf, Nome, UfNasc, Salario, Status }) => {
+  const employee = await employeesModel.updateEmployee({ DataCad, Cargo, Cpf, Nome, UfNasc, Salario, Status });
   return employee;
 };
 
-const deleteEmployee = async (CPF) => {
-  const getEmployee = await getEmployeeByCpf(CPF);
+const deleteEmployee = async (Cpf) => {
+  const getEmployee = await employeesModel.getEmployeeByCpf(Cpf);
   if (!getEmployee) throw new Error('Employee already not exists');
-  await employeesModel.deleteEmployee(CPF);
+  await employeesModel.deleteEmployee(Cpf);
   return getEmployee;
 };
 

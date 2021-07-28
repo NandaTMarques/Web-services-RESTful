@@ -1,11 +1,12 @@
 import React from 'react';
+import { Table } from 'react-bootstrap';
 
-const Table = ({allEmployees}) => {
+const TableEmployees = ({allEmployees}) => {
   
   return (
-    <article className="content">
+    <div>
       <h2>Detalhes dos Funcionários</h2>
-      <table className="rTable">
+      <Table striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>Nome</th>
@@ -28,9 +29,9 @@ const Table = ({allEmployees}) => {
               <td>{allEmployees.Status}</td>
             </tr>
         </tbody>
-      </table>
-    </article>
+      </Table>
+    </div>
   )
 }; 
   
-export default Table;
+export default TableEmployees;

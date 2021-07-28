@@ -20,7 +20,7 @@ const getAllEmployees = async () => {
 const getEmployeeByName = async (Nome) => {
   if(!Nome) throw new Error('Invalid entries. Try again.');
   const employee = await employeesModel.getEmployeeByName(Nome);
-  return employee;
+  return [employee];
 };
 
 const getEmployeesByCargo = async (Cargo) => {
@@ -36,6 +36,7 @@ const getEmployeesByData = async (DataCad) => {
 };
 
 const getAllEmployeesByUF = async (UfNasc) => {
+  console.log(UfNasc);
   const employees = await employeesModel.getAllEmployeesByUF(UfNasc);
   return employees;
 };
@@ -47,11 +48,11 @@ const getEmployeesBySalario = async (Salario) => {
 };
 
 const getEmployeesByFaixaSalarial = async (min, max) => {
+  console.log(min, max);
   //if(!min || !max) throw new Error('Invalid entries. Try again.');
-  const employees = await employeesModel.getEmployeesByFaixaSalarial(min, max);
+  const employees = await employeesModel.getEmployeesByFaixaSalarial(+min, +max);
   return employees;
 };
-
 
 const getEmployeesByStatus = async (Status) => {
   if(!Status) throw new Error('Invalid entries. Try again.');
@@ -62,7 +63,7 @@ const getEmployeesByStatus = async (Status) => {
 const getEmployeeByCpf = async (Cpf) => {
   if(!Cpf || Cpf.length !== 11) throw new Error('Invalid entries. Try again.');
   const Employee = await employeesModel.getEmployeeByCpf(Cpf);
-  return Employee;
+  return [Employee];
 };
 
 const updateEmployee = async ({ DataCad, Cargo, Cpf, Nome, UfNasc, Salario, Status }) => {

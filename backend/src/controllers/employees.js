@@ -10,9 +10,10 @@ const getAllEmployees = async (_req, res) => {
 };
 
 const getEmployeeByName = async (req, res) => {
+  console.log(req);
   try {
-    const { Nome } = req.body;
-    const employee = await employeesServices.getEmployeeByName(Nome);
+    const { search } = req.body;
+    const employee = await employeesServices.getEmployeeByName(search);
     return res.status(200).json(employee);
   } catch (error) {
     res.status(404).json(error.message);
@@ -31,10 +32,9 @@ const createEmployee = async (req, res) => {
 };
 
 const getEmployeeByCpf = async (req, res) => {
-  console.log(req.body);
   try {
-    const { Cpf } = req.body;
-    const employee = await employeesServices.getEmployeeByCpf(Cpf);
+    const { search } = req.body;
+    const employee = await employeesServices.getEmployeeByCpf(search);
     return res.status(200).json(employee);
   } catch (error) {
     res.status(404).json(error.message);
@@ -43,8 +43,8 @@ const getEmployeeByCpf = async (req, res) => {
 
 const getEmployeesByCargo = async (req, res) => {
   try {
-    const { Cargo } = req.body;
-    const employees = await employeesServices.getEmployeesByCargo(Cargo);
+    const { search } = req.body;
+    const employees = await employeesServices.getEmployeesByCargo(search);
     return res.status(200).json(employees);
   } catch (error) {
     res.status(404).json(error.message);
@@ -53,17 +53,19 @@ const getEmployeesByCargo = async (req, res) => {
 
 const getEmployeesByData = async (req, res) => {
   try {
-    const { DataCad } = req.body;
-    const employees = await employeesServices.getEmployeesByData(DataCad);
+    const { search } = req.body;
+    const employees = await employeesServices.getEmployeesByData(search);
     return res.status(200).json(employees);
   } catch (error) {
     res.status(404).json(error.message);
   }
 };
 
-const getAllEmployeesByUF = async (_req, res) => {
+const getAllEmployeesByUF = async (req, res) => {
+  const { search } = req.body;
+  console.log(search);
   try {
-    const employees = await employeesServices.getAllEmployeesByUF();
+    const employees = await employeesServices.getAllEmployeesByUF(search);
     res.status(200).json(employees);
   } catch (error) {
     res.status(400).json(error.message);
@@ -72,8 +74,8 @@ const getAllEmployeesByUF = async (_req, res) => {
 
 const getEmployeesBySalario = async (req, res) => {
   try {
-    const { Salario } = req.body;
-    const employees = await employeesServices.getEmployeesBySalario(Salario);
+    const { search } = req.body;
+    const employees = await employeesServices.getEmployeesBySalario(search);
     return res.status(200).json(employees);
   } catch (error) {
     res.status(404).json(error.message);
@@ -81,8 +83,9 @@ const getEmployeesBySalario = async (req, res) => {
 };
 
 const getEmployeesByFaixaSalarial = async (req, res) => {
+  console.log(req.body.salario)
   try {
-    const { min, max } = req.body;
+    const { min, max } = req.body.salario;
     const employees = await employeesServices.getEmployeesByFaixaSalarial(min, max);
     return res.status(200).json(employees);
   } catch (error) {
@@ -92,8 +95,8 @@ const getEmployeesByFaixaSalarial = async (req, res) => {
 
 const getEmployeesByStatus = async (req, res) => {
   try {
-    const { Status } = req.body;
-    const employees = await employeesServices.getEmployeesByStatus(Status);
+    const { search } = req.body;
+    const employees = await employeesServices.getEmployeesByStatus(search);
     return res.status(200).json(employees);
   } catch (error) {
     res.status(404).json(error.message);
@@ -102,8 +105,8 @@ const getEmployeesByStatus = async (req, res) => {
 
 const deleteEmployee = async (req, res) => {
   try {
-    const { Cpf } = req.body;
-    const employee = await employeesServices.deleteEmployee(Cpf);
+    const { search } = req.body;
+    const employee = await employeesServices.deleteEmployee(search);
     res.status(204).json(employee);
   } catch (error) {
     res.status(500).json(error.message);

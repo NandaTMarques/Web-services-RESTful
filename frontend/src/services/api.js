@@ -10,10 +10,4 @@ export const apiAxios = ({ method, route, ...rest }) => axios({
   ...rest
 });
 
-/* const api2 = {
-  deleteEmployee: async () => axios
-    .delete(`${baseURL}${DELETE}`)
-    .then((result) => result.data.response),
-}; */
-
 export default api;

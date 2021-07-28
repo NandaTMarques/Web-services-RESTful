@@ -3,6 +3,7 @@ import api, { apiAxios } from '../services/api';
 import logo from '../images/logo.png';
 import ReturnButton from '../components/ReturnButton';
 import SelectSearch from '../components/SelectSearch';
+import { Table } from 'react-bootstrap';
 
 function AllEmployees() {
   const [employees, setEmployees] = useState([]);
@@ -13,12 +14,10 @@ function AllEmployees() {
       if (query) {
         const route = `api/employees-${query.field}`;
         const response = await apiAxios({ method: 'get', route, params: query.search });
-        console.log(response);
         setEmployees(response.data);
       } else {
         const route = 'api/employees';
         const response = await apiAxios({ method: 'get', route});
-        //console.log(response)
         setEmployees(response.data);
       }
     }
@@ -32,8 +31,8 @@ function AllEmployees() {
         <h2>Funcionários</h2>
       </div>
       <ReturnButton />
-      <SelectSearch setQuery={ setQuery }/>
-      <table className="rTable">
+      <SelectSearch setEmployees={ setEmployees }/>
+      <Table responsive="sm" striped bordered hover>
         <thead>
           <tr>
             <th>Nome</th>
@@ -58,7 +57,7 @@ function AllEmployees() {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
       <ReturnButton />
     </article>
   );

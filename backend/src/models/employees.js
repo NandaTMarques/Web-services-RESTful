@@ -48,10 +48,9 @@ const  getEmployeesByData = async (DataCad) => {
   return employee;
 };
 
-const  getAllEmployeesByUF = async () => {
+const  getAllEmployeesByUF = async (UfNasc) => {
   const employee = await connection()
-    .then((db) =>  db.collection('employees')
-    .find().sort({UfNasc: -1}).toArray());
+    .then((db) =>  db.collection('employees').find({ UfNasc: UfNasc }).toArray());
   return employee;
 };
 

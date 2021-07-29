@@ -71,3 +71,4 @@ A aplicação poderia ficar ainda melhor (não pretendo parar por aqui):
 - aumentar a abrangencia dos testes, tando no backend, quanto no frontend;
 - criar uma tela de login e fazer a autenticação com JWT, para somente quem tem autorização possa excluir e criar funcionários.
 
+Feito com ❤️ por Fernanda Teixeira Marques 👋🏽 [Entre em contato!](https://www.linkedin.com/in/fernandadesenvolvedoraweb/)

@@ -1,37 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import api, { apiAxios } from '../services/api';
-import logo from '../images/logo.png';
-import ReturnButton from '../components/ReturnButton';
+import React, { useContext } from 'react';
+import Header from '../components/Header';
 import SelectSearch from '../components/SelectSearch';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
+import api from '../services/api';
+import { GlobalContext } from '../Context';
 
 function AllEmployees() {
-  const [employees, setEmployees] = useState([]);
-  const [query, setQuery] = useState(null);
+  const { employees } = useContext(GlobalContext);
 
-  useEffect(() => {
-    async function loadEmployees() {
-      if (query) {
-        const route = `api/employees-${query.field}`;
-        const response = await apiAxios({ method: 'get', route, params: query.search });
-        setEmployees(response.data);
+  async function handleDelete(cpf) {
+    if(window.confirm('Deseja realmente excluir o funcionário?')) {
+      const response = await api.delete(`/api/employees/delete/${cpf}`);
+      if(response.status === 204) {
+        alert('Funcionário deletado com sucesso!');
       } else {
-        const route = 'api/employees';
-        const response = await apiAxios({ method: 'get', route});
-        setEmployees(response.data);
-      }
-    }
-    loadEmployees();
-  }, [query]);
+        alert('Erro ao deletar funcionário!')
+      };
+    };
+  };
 
   return (
     <article>
-      <div className="header">
-        <img src={logo} alt='logo Allugator' className="logo-home"/>
-        <h2>Funcionários</h2>
-      </div>
-      <ReturnButton />
-      <SelectSearch setEmployees={ setEmployees }/>
+      <Header name="Funcionários"/>
+      <SelectSearch/>
       <Table responsive="sm" striped bordered hover>
         <thead>
           <tr>
@@ -42,11 +33,12 @@ function AllEmployees() {
             <th>Salário</th>
             <th>Data de Cadastro</th>
             <th>Status</th>
+            <th>Excluir</th>
           </tr>
         </thead>
         <tbody>
           {employees.map((employee) => (
-            <tr key={ employee._id }>
+            <tr key={ employee.cpf }>
               <td>{employee.Nome}</td>
               <td>{employee.Cpf}</td>
               <td>{employee.Cargo}</td>
@@ -54,11 +46,23 @@ function AllEmployees() {
               <td>{employee.Salario}</td>
               <td>{employee.DataCad}</td>
               <td>{employee.Status}</td>
+              <td>
+                <>
+                  <Button
+                    variant="danger"
+                    type="button"
+                    data-testid="delete-buttton"
+                    onClick={ () => handleDelete(employee.Cpf) }
+                    className="delete-button"
+                  >
+                    Excluir
+                  </Button>
+                </>
+              </td>
             </tr>
           ))}
         </tbody>
       </Table>
-      <ReturnButton />
     </article>
   );
 }

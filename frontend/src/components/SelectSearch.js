@@ -1,11 +1,13 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
+import { GlobalContext } from '../Context';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 
-const SelectSearch = ({ setEmployees }) => {
-  const [field, setField] = useState(null);
+const SelectSearch = () => {
+  const { setEmployees } = useContext(GlobalContext);
+  const [salario, setSalario] = useState({ min: null, max: null });
   const [search, setSearch] = useState('');
-  const [salario, setSalario] = useState({ min: 0, max: 0 });
+  const [field, setField] = useState('todos');
 
   const handleSubmit = async () => {
     const route = { url: `api/employees/${field}`, method: 'post' };
@@ -13,93 +15,89 @@ const SelectSearch = ({ setEmployees }) => {
       route.url = 'api/employees/';
       route.method = 'get';
     }
+
     const response = await axios[route.method]('http://localhost:3001/' + route.url, {
       field,
       search,
       salario,
     });
     setEmployees(response.data);
+    setSearch(null);
+    setSalario({ min: null, max: null });
   };
 
-  const arrayRotas = ['nome', 'cpf', 'uf', 'cargo', 'datacad', 'salario', 'status'];
+  const arrayRotas = ['nome', 'cpf', 'uf', 'cargo', 'datacad', 'faixa-salarial', 'status'];
   return (
-    <section className='form-select'>
-      <select
-        name='selectRota'
-        value={field}
-        onChange={({ target }) => setField(target.value)}
-      >
-        {
-          <option value={null} selected>
-            todos
-          </option>
-        }
-        {arrayRotas.map((rota) => (
-          <option value={rota} key={rota}>
-            {rota}
-          </option>
-        ))}
-      </select>
-      <input
-        placeholder='Digite sua Busca'
-        type='text'
-        name='Busca'
-        min={1}
-        onChange={({ target }) => setSearch(target.value)}
-      />
-      <label>Faixa Salarial</label>
-      <input
-        placeholder='min'
-        type='text'
-        name='Busca'
-        min={1}
-        onChange={({ target }) => setSalario({ ...salario, min: target.value })}
-        disabled={field === 'todos' ? false : true}
-      />
-      <input
-        placeholder='max'
-        type='text'
-        name='Busca'
-        min={1}
-        onChange={({ target }) => setSalario({ ...salario, max: target.value })}
-        disabled={field === 'todos' ? false : true}
-      />
-      <button
-        className='add-service-form'
-        type='button'
-        data-testid='service-request-button'
-        onClick={handleSubmit}
-      >
-        Buscar
-      </button>
+    <section className='bg-secondary bg-gradient p-3'>
       <Row className='mb-3'>
         <Form.Group as={Col} controlId='formGridState'>
-          <Form.Label>State</Form.Label>
-          <Form.Select defaultValue='Choose...'>
-            <option>Choose...</option>
-            <option>...</option>
+          <Form.Label className='fw-bold'>Selecione uma opção</Form.Label>
+          <Form.Select
+            name='selectRota'
+            value={field}
+            onChange={({ target }) => setField(target.value)}
+            defaultValue='todos'
+          >
+            <option value={null} selected>
+              todos
+            </option>
+            {arrayRotas.map((rota) => (
+              <option value={rota} key={rota}>
+                {rota}
+              </option>
+            ))}
           </Form.Select>
         </Form.Group>
 
         <Form.Group as={Col} controlId='formGridCity'>
-          <Form.Label>City</Form.Label>
-          <Form.Control />
+          <Form.Label className='fw-bold'>Digite sua Busca</Form.Label>
+          <Form.Control
+            placeholder='search'
+            type='text'
+            name='Busca'
+            value={search}
+            disabled={field !== 'faixa-salarial' ? false : true}
+            onChange={({ target }) => setSearch(target.value)}/>
+        </Form.Group>
+        
+        
+        <Form.Group as={Col} controlId='min'>
+        <Form.Label className='fw-bold'>Faixa Salarial</Form.Label>
+          <Form.Control 
+            placeholder='min'
+            type='number'
+            name='min'
+            value={salario.min}
+            min={1}
+            onChange={({ target }) => setSalario({ ...salario, min: target.value })}
+            disabled={field === 'faixa-salarial' ? false : true}/>
+        </Form.Group>
+        <Form.Group as={Col} controlId='max' className='align-self-end'>
+          <Form.Control
+            placeholder='max'
+            type='number'
+            name='max'
+            value={salario.max}
+            min={1}
+            onChange={({ target }) => setSalario({ ...salario, max: target.value })}
+            disabled={field === 'faixa-salarial' ? false : true}/>
         </Form.Group>
 
-        <Form.Group as={Col} controlId='formGridZip'>
-          <Form.Label>Zip</Form.Label>
-          <Form.Control />
+        <Form.Group as={Col} controlId='formGridZip' className='align-self-end'>
+            <Button
+              className='fw-bold'
+              type='button'
+              data-testid='service-request-button'
+              onClick={handleSubmit}
+            >
+              Buscar Funcionários
+            </Button>
         </Form.Group>
-        <Form.Group as={Col} controlId='formGridZip'>
-          <Form.Label>Zip</Form.Label>
-          <Form.Control />
-        </Form.Group>
-        <Col xs='auto' className='my-1'>
-          <Button type='submit'>Submit</Button>
-        </Col>
       </Row>
     </section>
   );
 };
 
 export default SelectSearch;
+
+

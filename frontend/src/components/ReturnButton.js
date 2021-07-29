@@ -1,19 +1,23 @@
 import React from 'react';
 import { useHistory } from 'react-router';
+import { Button } from 'react-bootstrap';
 
 function ReturnButton() {
   const history = useHistory();
   return (
-    <button
-      onClick={ () => {
-        history.push('/');
-      } }
-      className="logout-button"
-      data-testid="logout-button"
-      type="button"
-    >
-    Voltar
-    </button>
+    <>
+      <Button
+        variant="warning"
+        onClick={ () => {
+          history.push('/');
+        } }
+        className="return-button"
+        data-testid="return-button"
+        type="button"
+      >
+        Voltar
+      </Button>{' '}
+    </>
   );
 }
 

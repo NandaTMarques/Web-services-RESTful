@@ -10,7 +10,6 @@ const getAllEmployees = async (_req, res) => {
 };
 
 const getEmployeeByName = async (req, res) => {
-  console.log(req);
   try {
     const { search } = req.body;
     const employee = await employeesServices.getEmployeeByName(search);
@@ -23,7 +22,13 @@ const getEmployeeByName = async (req, res) => {
 const createEmployee = async (req, res) => {
   try {
     const { Cargo, Cpf, Nome, UfNasc, Salario } = req.body;
-    const newEmployee = await employeesServices.createEmployee({ Cargo, Cpf, Nome, UfNasc, Salario });
+    const newEmployee = await employeesServices.createEmployee({
+      Cargo,
+      Cpf,
+      Nome,
+      UfNasc,
+      Salario 
+    });
     
     res.status(201).json(newEmployee);
   } catch (error) {
@@ -63,7 +68,6 @@ const getEmployeesByData = async (req, res) => {
 
 const getAllEmployeesByUF = async (req, res) => {
   const { search } = req.body;
-  console.log(search);
   try {
     const employees = await employeesServices.getAllEmployeesByUF(search);
     res.status(200).json(employees);
@@ -83,7 +87,7 @@ const getEmployeesBySalario = async (req, res) => {
 };
 
 const getEmployeesByFaixaSalarial = async (req, res) => {
-  console.log(req.body.salario)
+  console.log(req)
   try {
     const { min, max } = req.body.salario;
     const employees = await employeesServices.getEmployeesByFaixaSalarial(min, max);
@@ -105,8 +109,8 @@ const getEmployeesByStatus = async (req, res) => {
 
 const deleteEmployee = async (req, res) => {
   try {
-    const { search } = req.body;
-    const employee = await employeesServices.deleteEmployee(search);
+    const { cpf } = req.params;
+    const employee = await employeesServices.deleteEmployee(cpf);
     res.status(204).json(employee);
   } catch (error) {
     res.status(500).json(error.message);

@@ -30,6 +30,8 @@ const  getEmployeeByName = async (Nome) => {
   return employee;
 };
 
+// find({Nome: {$regex: Nome}}))
+
 const  getEmployeeByCpf = async (Cpf) => {
   const employee = await connection()
     .then((db) =>  db.collection('employees').findOne({ Cpf: Cpf }));
@@ -63,7 +65,7 @@ const  getEmployeesBySalario = async (Salario) => {
 const  getEmployeesByFaixaSalarial = async (min, max) => {
   const employee = await connection()
     .then((db) =>  db.collection('employees')
-    .find({ $and: [{ Salario: { $gt: min} }, {Salario: { $lt: max}}] })
+    .find({ $and: [{ Salario: { $gte: min} }, {Salario: { $lte: max}}] })
     .toArray());
   return employee;
 };

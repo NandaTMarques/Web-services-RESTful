@@ -15,6 +15,6 @@ router.post('/uf', rescue(employeesController.getAllEmployeesByUF));
 router.post('/salario', rescue(employeesController.getEmployeesBySalario));
 router.post('/faixa-salarial', rescue(employeesController.getEmployeesByFaixaSalarial));
 router.post('/status', rescue(employeesController.getEmployeesByStatus));
-router.delete('/delete', rescue(employeesController.deleteEmployee));
+router.delete('/delete/:cpf', rescue(employeesController.deleteEmployee));
 
 module.exports = router;

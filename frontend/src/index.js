@@ -4,10 +4,13 @@ import Routes from './routes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
+import GlobalProvider from './Context';
 
 ReactDOM.render(
   <BrowserRouter>
-    <Routes />
+    <GlobalProvider>
+      <Routes />
+    </GlobalProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

@@ -6,14 +6,43 @@ html {
 
 body {
   align-items: center;
-  /* background-color: rgb(104, 101, 101);
-  color: white; */
   font-family: Open Sans, sans-serif;
   margin: 0;
   min-height: 100%;
   width: 100%;
 }
 
+/* .home-body {
+  background-color: rgb(104, 101, 101);
+} */
+
 a {
   text-decoration: none;
 }
+
+.home-logo {
+  width: 150px;
+  height: 150px;
+}
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.322) 2px 2px 6px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header h1 {
+  margin-top: 50px;
+  margin-left: 35px;
+}
+
+.logo-header {
+  width: 100px;
+  height: 100px;
+}
+
+

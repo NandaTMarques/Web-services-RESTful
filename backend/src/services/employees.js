@@ -5,10 +5,27 @@ const createEmployee = async ({ Cargo, Cpf, Nome, UfNasc, Salario }) => {
   const Status = 'ATIVO';
   const findEmployee = await employeesModel.getEmployeeByCpf(Cpf);
   if(findEmployee) {
-    const updateEmployee = await employeesModel.updateEmployee({ DataCad, Cargo, Cpf, Nome, UfNasc, Salario, Status });
+    const updateEmployee = await employeesModel.updateEmployee({
+      DataCad,
+      Cargo,
+      Cpf,
+      Nome,
+      UfNasc,
+      Salario,
+      Status
+    });
+
     return updateEmployee;
   }
-  const newEmployee = await employeesModel.createEmployee({ DataCad, Cargo, Cpf, Nome, UfNasc, Salario, Status });
+  const newEmployee = await employeesModel.createEmployee({
+    DataCad,
+    Cargo,
+    Cpf,
+    Nome,
+    UfNasc,
+    Salario,
+    Status
+  });
   return newEmployee;
 };
 
@@ -36,7 +53,6 @@ const getEmployeesByData = async (DataCad) => {
 };
 
 const getAllEmployeesByUF = async (UfNasc) => {
-  console.log(UfNasc);
   const employees = await employeesModel.getAllEmployeesByUF(UfNasc);
   return employees;
 };

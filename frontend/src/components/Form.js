@@ -79,7 +79,8 @@ const FormCreate = () => {
               type="number"
               name="salario"
               value={Salario}
-              min={1} 
+              min={1}
+              data-testid="salary"
               onChange={ ({target}) => setSalario(target.value) }
             />
           </Form.Group>

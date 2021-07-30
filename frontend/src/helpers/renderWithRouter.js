@@ -3,12 +3,19 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { render } from '@testing-library/react';
+import GlobalProvider from '../Context';
 
-const renderWithRouter = (component) => {
+const renderWithRouter = (component, route = '/') => {
   const history = createMemoryHistory();
-  return ({
-    ...render(<Router history={history}>{component}</Router>), history,
-  });
+  history.push(route);
+  return {
+    ...render(
+      <Router history={history}>
+        <GlobalProvider>
+        {component}
+        </GlobalProvider>
+      </Router>), history,
+  };
 };
 
 export default renderWithRouter;

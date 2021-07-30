@@ -26,19 +26,19 @@ function AllEmployees() {
       <Table responsive="sm" striped bordered hover>
         <thead>
           <tr>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Cargo</th>
-            <th>Estado</th>
-            <th>Salário</th>
-            <th>Data de Cadastro</th>
-            <th>Status</th>
-            <th>Excluir</th>
+            <th data-testid='column-header-nome'>Nome</th>
+            <th data-testid='column-header-cpf'>CPF</th>
+            <th data-testid='column-header-cargo'>Cargo</th>
+            <th data-testid='column-header-estado'>Estado</th>
+            <th data-testid='column-header-salario'>Salário</th>
+            <th data-testid='column-header-data'>Data de Cadastro</th>
+            <th data-testid='column-header-status'>Status</th>
+            <th data-testid='column-header-button-delete'>Excluir</th>
           </tr>
         </thead>
         <tbody>
           {employees.map((employee) => (
-            <tr key={ employee.cpf }>
+            <tr key={ employee.Cpf }>
               <td>{employee.Nome}</td>
               <td>{employee.Cpf}</td>
               <td>{employee.Cargo}</td>

@@ -39,11 +39,11 @@ Nesse projeto, fui capaz de:
 
 ## Setup do Projeto
 
-Foi criado um repositório chamado "backend", onde todas as informações do Back-end estão armazenadas e com os testes implementados. Foi criado ainda um repositório chamado "frontend", onde o Fron-tend está armazenado juntamente com seus testes.
+Foi criado um repositório chamado "backend", onde todas as informações do Back-end estão armazenadas e com os testes implementados. Foi criado ainda um repositório chamado "frontend", onde o Frontend está armazenado juntamente com seus testes.
 
-O Front-end foi construido em React, foi utilizado componente funcional e foi testado através de RTL. Foi utilizado o react-router-dom e o projeto esta todo componentizado. Além disso, estilizei o projeto com o bootstrap.
+O Front-end foi construido em React, foi utilizado componente funcional, context Api e foi testado através de RTL. Foi utilizado o react-router-dom e o projeto esta todo componentizado. Além disso, estilizei o projeto com o bootstrap.
 
-O Back-end foi construido utilizando o framework Express na construção de APIs com Node, com arquitetura RESTful. O banco de dados foi convertido em JSON, foi utilizado o mongoDB como banco de dados. Os testes foram criados utilizando o frisby. E a porta utilizada foi a 3001, para evitar conflitos com o front-end que roda na porta 3000.
+O Backend foi construido utilizando o framework Express na construção de APIs com Node, com arquitetura RESTful. O banco de dados foi convertido em JSON, foi utilizado o mongoDB como banco de dados. Os testes foram criados utilizando o frisby. E a porta utilizada foi a 3001, para evitar conflitos com o front-end que roda na porta 3000.
 
 ## Como utilizar a aplicação
 
@@ -55,7 +55,7 @@ Inicialmente tem uma tela com bontões que te levam às páginas de criar funcio
 
 ## Testes
 
-Para executar os testes localmente, você pode rodar o comando `npm test`.
+Para executar os testes do frontend localmente, você deve entrar no repositório do frontend e rode o comando `npm test`.
 
 Caso prefira testar um requisito por vez pode executar o teste da seguinte forma: `npm test tests/addEmployees` (nesse caso testa apenas o requisito addEmployees.test)
 
@@ -63,12 +63,12 @@ Caso prefira testar um requisito por vez pode executar o teste da seguinte forma
 
 ## Melhoras a fazer
 
-A aplicação poderia ficar ainda melhor (não pretendo parar por aqui):
+A aplicação poderia ficar ainda melhor (não pretendo parar por aqui) assim que eu:
 
-- Documentação da API através do Swagger;
+- Documentar da API através do Swagger;
 - Criar validações para o frontend;
 - criar a combinação de filtragens de funcionários, utilizando mais de uma filtragem por vez, ou uma após a outra;
-- aumentar a abrangencia dos testes, tando no backend, quanto no frontend;
+- aumentar a abrangência dos testes, tando no backend, quanto no frontend, no frontend está com 65.79% de abrangência;
 - criar uma tela de login e fazer a autenticação com JWT, para somente quem tem autorização possa excluir e criar funcionários.
 
 Feito com ❤️ por Fernanda Teixeira Marques 👋🏽 [Entre em contato!](https://www.linkedin.com/in/fernandadesenvolvedoraweb/)

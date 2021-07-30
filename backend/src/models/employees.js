@@ -25,12 +25,12 @@ const getAllEmployees = async () => {
 };
 
 const  getEmployeeByName = async (Nome) => {
+  //console.log(Nome)
   const employee = await connection()
     .then((db) =>  db.collection('employees').findOne({ Nome: Nome }));
   return employee;
 };
-
-// find({Nome: {$regex: Nome}}))
+//.find({Nome: { $regex: new RegExp(Nome), $options: 'i' }}).toArray());
 
 const  getEmployeeByCpf = async (Cpf) => {
   const employee = await connection()

@@ -9,9 +9,9 @@ const Home = () => {
     <Container>
       <Row className='justify-content-md-center pt-5 mt-5 card-home'>
         <Col md='auto'>
-          <Card style={{ width: '18rem' }} className='text-center p-2 card'>
+          <Card style={{ width: '18rem', background: 'rgb(211, 207, 207)' }} className='text-center p-2 card'>
             <Card.Body>
-              <Card.Img src={logo} alt='logo Senior' sizes={200} className='home-logo'/>
+              <Card.Img src={logo} alt='logo Allugator' sizes={200} className='home-logo'/>
             </Card.Body>
             <Card.Footer className='d-grid gap-2'>
               <Button
@@ -20,6 +20,7 @@ const Home = () => {
                 type='button'
                 data-testid='register-button'
                 onClick={ () => history.push('/search')}
+                style={{ boxShadow: 'rgba(0, 0, 0, 0.322) 2px 2px 6px' }}
               >
                 Buscar Funcionário
               </Button>
@@ -29,6 +30,7 @@ const Home = () => {
                 type='button'
                 data-testid='search-button'
                 onClick={ () => history.push('/add')}
+                style={{ boxShadow: 'rgba(0, 0, 0, 0.322) 2px 2px 6px' }}
               >
                 Cadastrar Funcionário
               </Button>

@@ -70,7 +70,9 @@ const SelectSearch = () => {
             value={salario.min}
             min={1}
             onChange={({ target }) => setSalario({ ...salario, min: target.value })}
-            disabled={field === 'faixa-salarial' ? false : true}/>
+            disabled={field === 'faixa-salarial' ? false : true}
+            data-testid='input-min'
+            />
         </Form.Group>
         <Form.Group as={Col} controlId='max' className='align-self-end'>
           <Form.Control
@@ -80,7 +82,9 @@ const SelectSearch = () => {
             value={salario.max}
             min={1}
             onChange={({ target }) => setSalario({ ...salario, max: target.value })}
-            disabled={field === 'faixa-salarial' ? false : true}/>
+            disabled={field === 'faixa-salarial' ? false : true}
+            data-testid='input-max'
+          />
         </Form.Group>
 
         <Form.Group as={Col} controlId='formGridZip' className='align-self-end'>

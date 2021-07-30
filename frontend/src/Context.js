@@ -7,8 +7,10 @@ export const GlobalContext = createContext();
 function GlobalProvider({ children }) {
   const [employees, setEmployees] = useState([]);
 
-  useEffect(() => axios.get('http://localhost:3001/api/employees')
-    .then((response) => setEmployees(response.data)), []);
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/employees')
+        .then((response) => setEmployees(response.data))
+  }, []);
 
   const provide = {
     employees,

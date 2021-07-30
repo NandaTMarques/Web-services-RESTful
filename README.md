@@ -68,7 +68,7 @@ A aplicação poderia ficar ainda melhor (não pretendo parar por aqui) assim qu
 - Documentar da API através do Swagger;
 - Criar validações para o frontend;
 - criar a combinação de filtragens de funcionários, utilizando mais de uma filtragem por vez, ou uma após a outra;
-- aumentar a abrangência dos testes, tando no backend, quanto no frontend, no frontend está com 65.79% de abrangência;
+- aumentar a abrangência dos testes, tando no backend, quanto no frontend, no frontend está com 66.67% de abrangência;
 - criar uma tela de login e fazer a autenticação com JWT, para somente quem tem autorização possa excluir e criar funcionários.
 
 Feito com ❤️ por Fernanda Teixeira Marques 👋🏽 [Entre em contato!](https://www.linkedin.com/in/fernandadesenvolvedoraweb/)

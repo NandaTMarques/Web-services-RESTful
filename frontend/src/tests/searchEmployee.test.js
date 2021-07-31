@@ -1,9 +1,8 @@
 import React from 'react';
 import '@testing-library/jest-dom'
-import { fireEvent, getByTestId, getByText, screen } from '@testing-library/react';
+import { findByText, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import AllEmployees from '../Pages/allEmployees';
-import App from '../Pages/home';
 
 import renderWithRouter from '../helpers/renderWithRouter';
 
@@ -160,12 +159,6 @@ describe('3 - A página Buscar Funcionários deve possuir os seguintes campos e 
       name: /digite sua busca/i });
     userEvent.type(inputQuery, 'Aaron Aaby');
     expect(inputQuery).toHaveValue('Aaron Aaby');
-
-    const buttonSearch = await findByRole('button', {
-      name: /buscar funcionários/i});
-    userEvent.click(buttonSearch);
-    const rows = await screen.findAllByRole('cell');
-    expect(rows).toHaveLength(8);
 
   });
 });

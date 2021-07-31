@@ -9,7 +9,7 @@ const Home = () => {
     <Container>
       <Row className='justify-content-md-center pt-5 mt-5 card-home'>
         <Col md='auto'>
-          <Card style={{ width: '18rem', background: 'rgb(211, 207, 207)' }} className='text-center p-2 card'>
+          <Card style={{ width: '18rem' }} className='text-center p-2 card'>
             <Card.Body>
               <Card.Img src={logo} alt='logo Allugator' sizes={200} className='home-logo'/>
             </Card.Body>

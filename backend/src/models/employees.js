@@ -25,7 +25,6 @@ const getAllEmployees = async () => {
 };
 
 const  getEmployeeByName = async (Nome) => {
-  //console.log(Nome)
   const employee = await connection()
     .then((db) =>  db.collection('employees').findOne({ Nome: Nome }));
   return employee;
@@ -53,12 +52,6 @@ const  getEmployeesByData = async (DataCad) => {
 const  getAllEmployeesByUF = async (UfNasc) => {
   const employee = await connection()
     .then((db) =>  db.collection('employees').find({ UfNasc: UfNasc }).toArray());
-  return employee;
-};
-
-const  getEmployeesBySalario = async (Salario) => {
-  const employee = await connection()
-    .then((db) =>  db.collection('employees').find({ Salario: Salario }).toArray());
   return employee;
 };
 
@@ -102,7 +95,6 @@ module.exports = {
   getEmployeesByCargo,
   getEmployeesByData,
   getAllEmployeesByUF,
-  getEmployeesBySalario,
   getEmployeesByFaixaSalarial,
   getEmployeesByStatus,
   updateEmployee,

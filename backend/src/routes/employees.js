@@ -12,7 +12,6 @@ router.post('/cpf', rescue(employeesController.getEmployeeByCpf));
 router.post('/cargo', rescue(employeesController.getEmployeesByCargo));
 router.post('/datacad', rescue(employeesController.getEmployeesByData));
 router.post('/uf', rescue(employeesController.getAllEmployeesByUF));
-router.post('/salario', rescue(employeesController.getEmployeesBySalario));
 router.post('/faixa-salarial', rescue(employeesController.getEmployeesByFaixaSalarial));
 router.post('/status', rescue(employeesController.getEmployeesByStatus));
 router.delete('/delete/:cpf', rescue(employeesController.deleteEmployee));

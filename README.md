@@ -43,7 +43,7 @@ Foi criado um repositório chamado "backend", onde todas as informações do Bac
 
 O Front-end foi construido em React, foi utilizado componente funcional, context Api e foi testado através de RTL. Foi utilizado o react-router-dom e o projeto esta todo componentizado. Além disso, estilizei o projeto com o bootstrap.
 
-O Backend foi construido utilizando o framework Express na construção de APIs com Node, com arquitetura RESTful. O banco de dados foi convertido em JSON, foi utilizado o mongoDB como banco de dados. Os testes foram criados utilizando o frisby. E a porta utilizada foi a 3001, para evitar conflitos com o front-end que roda na porta 3000.
+O Backend foi construido utilizando o framework Express na construção de APIs com Node, com arquitetura RESTful. O banco de dados foi convertido em JSON, foi utilizado o mongoDB como banco de dados, e usei o joi para fazer as validações na hora de criar funcionários. Os testes foram criados utilizando o frisby. E a porta utilizada foi a 3001, para evitar conflitos com o front-end que roda na porta 3000.
 
 ## Como utilizar a aplicação
 
@@ -57,7 +57,9 @@ Inicialmente tem uma tela com bontões que te levam às páginas de criar funcio
 
 Para executar os testes do frontend localmente, você deve entrar no repositório do frontend e rode o comando `npm test`.
 
-Caso prefira testar um requisito por vez pode executar o teste da seguinte forma: `npm test tests/addEmployees` (nesse caso testa apenas o requisito addEmployees.test)
+Caso prefira testar um requisito por vez pode executar o teste da seguinte forma: `npm test tests/addEmployees` (nesse caso testa apenas o requisito addEmployees.test).
+
+Para executar os testes do backend localmente, você deve entrar no repositório do backend e rode o comando `npm run dev:test`. Caso queira conferir a cobertura dos testes é só rodar o comando `dev:test:coverage`.
 
 ---
 

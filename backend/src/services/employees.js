@@ -57,12 +57,6 @@ const getAllEmployeesByUF = async (UfNasc) => {
   return employees;
 };
 
-const getEmployeesBySalario = async (Salario) => {
-  if(!Salario) throw new Error('Invalid entries. Try again.');
-  const employees = await employeesModel.getEmployeesBySalario(Salario);
-  return employees;
-};
-
 const getEmployeesByFaixaSalarial = async (min, max) => {
   console.log(min, max);
   //if(!min || !max) throw new Error('Invalid entries. Try again.');
@@ -102,7 +96,6 @@ module.exports = {
   getEmployeesByCargo,
   getEmployeesByData,
   getAllEmployeesByUF,
-  getEmployeesBySalario,
   getEmployeesByFaixaSalarial,
   getEmployeesByStatus,
   updateEmployee,

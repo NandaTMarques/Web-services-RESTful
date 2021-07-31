@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const validateEntriesForm = (data) =>
   Joi.object({
-    Cargo: Joi.string().min(3).required(),
+    Cargo: Joi.string().min(5).required(),
     Cpf: Joi.string().length(11).required(),
     Nome: Joi.string().min(5).required(),
     UfNasc: Joi.string().min(2).max(2).required(),

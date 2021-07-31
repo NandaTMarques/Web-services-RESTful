@@ -76,18 +76,7 @@ const getAllEmployeesByUF = async (req, res) => {
   }
 };
 
-const getEmployeesBySalario = async (req, res) => {
-  try {
-    const { search } = req.body;
-    const employees = await employeesServices.getEmployeesBySalario(search);
-    return res.status(200).json(employees);
-  } catch (error) {
-    res.status(404).json(error.message);
-  }
-};
-
 const getEmployeesByFaixaSalarial = async (req, res) => {
-  console.log(req)
   try {
     const { min, max } = req.body.salario;
     const employees = await employeesServices.getEmployeesByFaixaSalarial(min, max);
@@ -125,7 +114,6 @@ module.exports = {
   getEmployeesByCargo,
   getEmployeesByData,
   getAllEmployeesByUF,
-  getEmployeesBySalario,
   getEmployeesByFaixaSalarial,
   getEmployeesByStatus,
   deleteEmployee,
